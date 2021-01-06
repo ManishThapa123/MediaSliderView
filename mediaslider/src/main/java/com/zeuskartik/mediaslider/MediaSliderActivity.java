@@ -228,7 +228,7 @@ public class MediaSliderActivity extends AppCompatActivity {
                 view = inflater.inflate(R.layout.image_item, container, false);
                 imageView = view.findViewById(R.id.mBigImage);
                // mProgressBar = view.findViewById(R.id.mProgressBar);
-                Glide.with(context).load(urlList.get(position)).centerInside().placeholder(context.getResources().getDrawable(R.drawable.images)).listener(new RequestListener<Drawable>() {
+                Glide.with(context).load(urlList.get(position)).centerCrop().placeholder(context.getResources().getDrawable(R.drawable.images)).listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                         //mProgressBar.setVisibility(View.GONE);
