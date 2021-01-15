@@ -22,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
@@ -36,6 +37,8 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 
 import java.util.ArrayList;
+
+import glimpse.glide.GlimpseTransformation;
 
 public class MediaSliderActivity extends AppCompatActivity {
     private ViewPager mPager;
@@ -228,7 +231,7 @@ public class MediaSliderActivity extends AppCompatActivity {
                 view = inflater.inflate(R.layout.image_item, container, false);
                 imageView = view.findViewById(R.id.mBigImage);
                // mProgressBar = view.findViewById(R.id.mProgressBar);
-                Glide.with(context).load(urlList.get(position)).placeholder(context.getResources().getDrawable(R.drawable.images)).listener(new RequestListener<Drawable>() {
+                Glide.with(context).load(urlList.get(position)).diskCacheStrategy(DiskCacheStrategy.RESOURCE).transform(new GlimpseTransformation()).placeholder(context.getResources().getDrawable(R.drawable.images)).listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                         //mProgressBar.setVisibility(View.GONE);
